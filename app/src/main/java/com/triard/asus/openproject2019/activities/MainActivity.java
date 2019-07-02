@@ -1,4 +1,4 @@
-package com.triard.asus.openproject2019;
+package com.triard.asus.openproject2019.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,16 +7,17 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+import com.triard.asus.openproject2019.model.Model;
+import com.triard.asus.openproject2019.adapter.MyAdapter;
+import com.triard.asus.openproject2019.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.Onclick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView( R.layout.activity_main);
 
         preferences = this.getSharedPreferences ( "MY_DATA", MODE_PRIVATE );
 

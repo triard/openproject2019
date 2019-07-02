@@ -1,4 +1,4 @@
-package com.triard.asus.openproject2019;
+package com.triard.asus.openproject2019.model;
 
 import java.util.Comparator;
 

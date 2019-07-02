@@ -1,4 +1,4 @@
-package com.triard.asus.openproject2019;
+package com.triard.asus.openproject2019.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -13,12 +13,17 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.triard.asus.openproject2019.CustomFilter;
+import com.triard.asus.openproject2019.R;
+import com.triard.asus.openproject2019.model.Model;
+
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implements Filterable {
 
     Context mContext;
-    ArrayList<Model> models, filterList;
+    public ArrayList<Model> models;
+    ArrayList<Model> filterList;
     private Onclick listener;
     CustomFilter filter;
 
@@ -32,7 +37,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item, null);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate( R.layout.list_item, null);
         return new ViewHolder(view);
 
     }

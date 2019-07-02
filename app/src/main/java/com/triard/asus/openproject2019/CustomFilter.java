@@ -2,6 +2,9 @@ package com.triard.asus.openproject2019;
 
 import android.widget.Filter;
 
+import com.triard.asus.openproject2019.adapter.MyAdapter;
+import com.triard.asus.openproject2019.model.Model;
+
 import java.util.ArrayList;
 
 public class CustomFilter extends Filter {
