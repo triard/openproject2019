@@ -4,7 +4,21 @@ import java.util.Comparator;
 
 public class Model {
     private String nama, asal;
-    private int img;
+    private String img;
+
+    public Model(String nama, String asal, String img) {
+        this.nama = nama;
+        this.asal = asal;
+        this.img = img;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     public String getNama() {
         return nama;
@@ -22,14 +36,6 @@ public class Model {
         this.asal = asal;
     }
 
-    public int getImg() {
-        return img;
-    }
-
-    public String setImg(int img) {
-        this.img = img;
-        return null;
-    }
 
     public  static final Comparator<Model> BY_TITTLE_ASCENDING = new Comparator<Model> ( ) {
 

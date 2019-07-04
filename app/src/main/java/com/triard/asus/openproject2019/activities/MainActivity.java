@@ -47,18 +47,10 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.Onclick
         ArrayList<Model> models = new ArrayList<>();
 
 
-        Model p = new Model();
-        p.setNama("Manchester United");
-        p.setAsal("England");
-
-        String url = p.setImg(R.drawable.soccer);
-        Picasso.get ().load ( url );
+        Model p = new Model("MU", "England", "https://upload.wikimedia.org/wikipedia/hif/f/ff/Manchester_United_FC_crest.png");
         models.add(p);
 
-        p = new Model();
-        p.setNama("Barcelona");
-        p.setAsal("Spain");
-        p.setImg(R.drawable.ic_launcher_foreground);
+        p = new Model("Barca", "Spain", "https://png.pngtree.com/element_our/png_detail/20181109/barcelona-logo-png_235045.jpg");
         models.add(p);
 
         String mShortSetting = preferences.getString ( "Sort", "Ascending" );

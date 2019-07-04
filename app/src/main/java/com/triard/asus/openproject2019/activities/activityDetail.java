@@ -1,5 +1,6 @@
 package com.triard.asus.openproject2019.activities;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -31,9 +32,8 @@ public class activityDetail extends AppCompatActivity {
         tvNama.setText(getIntent().getStringExtra("nama"));
         tvAsal.setText(getIntent().getStringExtra("asal"));
 
-//        Picasso.get().load(getIntent ().getStringExtra ( EXTRA_URL )).fit().centerInside().into(imageView);
-        Picasso.get().load(EXTRA_URL).into(imageView);
+        String image = getIntent().getStringExtra(EXTRA_URL);
 
-
+        Picasso.get().load(image).into(imageView);
     }
 }

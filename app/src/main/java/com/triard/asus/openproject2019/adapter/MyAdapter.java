@@ -13,6 +13,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.triard.asus.openproject2019.CustomFilter;
 import com.triard.asus.openproject2019.R;
 import com.triard.asus.openproject2019.model.Model;
@@ -44,10 +45,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder myHolder, int position) {
-        myHolder.mNama.setText(models.get(position).getNama());
-        myHolder.mAsal.setText(models.get(position).getAsal());
-        myHolder.mImageIv.setImageResource(models.get(position).getImg());
         Model model = models.get(position);
+
+        myHolder.mNama.setText(model.getNama());
+        myHolder.mAsal.setText(model.getAsal());
+        Picasso.get().load(model.getImg()).into(myHolder.mImageIv);
         myHolder.bind(model, listener);
 
         Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left);
