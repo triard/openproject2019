@@ -2,11 +2,11 @@ package com.triard.asus.openproject2019.model;
 
 import java.util.Comparator;
 
-public class Model {
+public class ClubItemsModel {
     private String nama, asal;
     private String img;
 
-    public Model(String nama, String asal, String img) {
+    public ClubItemsModel(String nama, String asal, String img) {
         this.nama = nama;
         this.asal = asal;
         this.img = img;
@@ -37,18 +37,18 @@ public class Model {
     }
 
 
-    public  static final Comparator<Model> BY_TITTLE_ASCENDING = new Comparator<Model> ( ) {
+    public  static final Comparator<ClubItemsModel> BY_TITTLE_ASCENDING = new Comparator<ClubItemsModel> ( ) {
 
         @Override
-        public int compare(Model o1, Model o2) {
+        public int compare(ClubItemsModel o1, ClubItemsModel o2) {
             return o1.getNama ().compareTo ( o2.getNama () );
         }
     };
 
-    public  static final Comparator<Model> BY_TITTLE_DESCENDING = new Comparator<Model> ( ) {
+    public  static final Comparator<ClubItemsModel> BY_TITTLE_DESCENDING = new Comparator<ClubItemsModel> ( ) {
 
         @Override
-        public int compare(Model o1, Model o2) {
+        public int compare(ClubItemsModel o1, ClubItemsModel o2) {
             return o2.getNama ().compareTo ( o1.getNama () );
         }
     };

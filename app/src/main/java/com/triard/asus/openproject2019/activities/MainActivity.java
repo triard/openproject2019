@@ -12,95 +12,101 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-import com.triard.asus.openproject2019.model.Model;
-import com.triard.asus.openproject2019.adapter.MyAdapter;
+import com.triard.asus.openproject2019.model.ClubItemsModel;
+import com.triard.asus.openproject2019.adapter.ClubItemsAdapter;
 import com.triard.asus.openproject2019.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MainActivity extends AppCompatActivity implements MyAdapter.Onclick {
+public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.Onclick {
     public static final String EXTRA_URL = "imageUrl";
+    private Button mBtn_ckubFav;
 
     RecyclerView recyclerView;
-    MyAdapter myAdapter;
-
+    ClubItemsAdapter clubItemsAdapter;
     SharedPreferences preferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_main);
-
         preferences = this.getSharedPreferences ( "MY_DATA", MODE_PRIVATE );
-
         recyclerView = findViewById(R.id.recycler_view);
+        mBtn_ckubFav =(Button)findViewById ( R.id.btn_ckubFav );
+
+        mBtn_ckubFav.setOnClickListener ( new View.OnClickListener ( ) {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent ( getApplicationContext (), ClubFavoriteActivity.class );
+                startActivity ( i );
+            }
+        } );
 
         getPlayers ();
     }
 
-//    add models to arraylist
+//    add clubItemsModels to arraylist
     private void getPlayers(){
-        ArrayList<Model> models = new ArrayList<>();
+        ArrayList<ClubItemsModel> clubItemsModels = new ArrayList<>();
 
+        ClubItemsModel p = new ClubItemsModel ("MU", "England", "https://upload.wikimedia.org/wikipedia/hif/f/ff/Manchester_United_FC_crest.png");
+        clubItemsModels.add(p);
 
-        Model p = new Model("MU", "England", "https://upload.wikimedia.org/wikipedia/hif/f/ff/Manchester_United_FC_crest.png");
-        models.add(p);
+        p = new ClubItemsModel ("Barca", "Spain", "https://png.pngtree.com/element_our/png_detail/20181109/barcelona-logo-png_235045.jpg");
+        clubItemsModels.add(p);
 
-        p = new Model("Barca", "Spain", "https://png.pngtree.com/element_our/png_detail/20181109/barcelona-logo-png_235045.jpg");
-        models.add(p);
-
+//        sorting
         String mShortSetting = preferences.getString ( "Sort", "Ascending" );
         if(mShortSetting.equals ( "Ascending" )){
-            Collections.sort ( models, Model.BY_TITTLE_ASCENDING );
+            Collections.sort ( clubItemsModels, ClubItemsModel.BY_TITTLE_ASCENDING );
         }else if(mShortSetting.equals ( "Descending" )){
-            Collections.sort ( models, Model.BY_TITTLE_DESCENDING );
+            Collections.sort ( clubItemsModels, ClubItemsModel.BY_TITTLE_DESCENDING );
         }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-//        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-
-        myAdapter = new MyAdapter(this, models, this);
-        recyclerView.setAdapter(myAdapter);
+//        onclick
+        clubItemsAdapter = new ClubItemsAdapter (this, clubItemsModels, this);
+        recyclerView.setAdapter( clubItemsAdapter );
     }
 
+//    intent untuk berpindah ke halaman detail club
     @Override
-    public void clickItem(Model model) {
-        Intent intent = new Intent(MainActivity.this, activityDetail.class);
-        intent.putExtra("nama", model.getNama());
-        intent.putExtra("asal", model.getAsal());
-        intent.putExtra(EXTRA_URL, model.getImg());
+    public void clickItem(ClubItemsModel clubItemsModel) {
+        Intent intent = new Intent(MainActivity.this, ClubsDetailActivity.class);
+        intent.putExtra("nama", clubItemsModel.getNama());
+        intent.putExtra("asal", clubItemsModel.getAsal());
+        intent.putExtra(EXTRA_URL, clubItemsModel.getImg());
         startActivity(intent);
 
     }
 
+//    menu searching, untuk mencaru club sepakbola
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
         final MenuItem item = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
-
             @Override
             public boolean onQueryTextSubmit(String s) {
-                myAdapter.getFilter().filter(s);
+                clubItemsAdapter.getFilter().filter(s);
                 if(fileList()!=null){
                     Toast.makeText(MainActivity.this,"No Records Found!",Toast.LENGTH_LONG).show();
 
-                }else{
-                    Toast.makeText(MainActivity.this,"Records Found!",Toast.LENGTH_LONG).show();
                 }
-
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                myAdapter.getFilter().filter(s);
+                clubItemsAdapter.getFilter().filter(s);
                 return false;
             }
         });

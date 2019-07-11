@@ -1,6 +1,5 @@
 package com.triard.asus.openproject2019.activities;
 
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -12,7 +11,7 @@ import com.triard.asus.openproject2019.R;
 
 import static com.triard.asus.openproject2019.activities.MainActivity.EXTRA_URL;
 
-public class activityDetail extends AppCompatActivity {
+public class ClubsDetailActivity extends AppCompatActivity {
 
     ImageView imageView;
     TextView tvNama, tvAsal;
@@ -20,7 +19,7 @@ public class activityDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_detail);
+        setContentView( R.layout.activity_club_detail );
 
 
         String image_detail = getIntent ().getStringExtra (EXTRA_URL);

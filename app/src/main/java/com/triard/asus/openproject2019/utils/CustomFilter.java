@@ -1,17 +1,17 @@
-package com.triard.asus.openproject2019;
+package com.triard.asus.openproject2019.utils;
 
 import android.widget.Filter;
 
-import com.triard.asus.openproject2019.adapter.MyAdapter;
-import com.triard.asus.openproject2019.model.Model;
+import com.triard.asus.openproject2019.adapter.ClubItemsAdapter;
+import com.triard.asus.openproject2019.model.ClubItemsModel;
 
 import java.util.ArrayList;
 
 public class CustomFilter extends Filter {
-    MyAdapter adapter;
-    ArrayList<Model> filterList;
+    ClubItemsAdapter adapter;
+    ArrayList<ClubItemsModel> filterList;
 
-    public CustomFilter(ArrayList<Model> filterList, MyAdapter adapter) {
+    public CustomFilter(ArrayList<ClubItemsModel> filterList, ClubItemsAdapter adapter) {
         this.adapter = adapter;
         this.filterList = filterList;
     }
@@ -23,14 +23,14 @@ public class CustomFilter extends Filter {
         FilterResults results = new FilterResults();
         if(constraint != null && constraint.length()>0){
             constraint = constraint.toString().toUpperCase();
-            ArrayList<Model> filtereModels = new ArrayList<>();
+            ArrayList<ClubItemsModel> filtereClubItemsModels = new ArrayList<>();
             for(int i=0; i<filterList.size();i++){
                 if (filterList.get(i).getNama().toUpperCase().contains(constraint)){
-                    filtereModels.add(filterList.get(i));
+                    filtereClubItemsModels.add(filterList.get(i));
                 }
             }
-            results.count = filtereModels.size();
-            results.values = filtereModels;
+            results.count = filtereClubItemsModels.size();
+            results.values = filtereClubItemsModels;
         }else {
 
             results.count = filterList.size();
@@ -42,7 +42,7 @@ public class CustomFilter extends Filter {
 
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
-        adapter.models = (ArrayList<Model>) results.values;
+        adapter.clubItemsModels = (ArrayList<ClubItemsModel>) results.values;
         adapter.notifyDataSetChanged();
     }
 }
