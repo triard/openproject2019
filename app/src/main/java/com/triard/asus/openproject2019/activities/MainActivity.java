@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.triard.asus.openproject2019.model.ClubItemsModel;
+import com.triard.asus.openproject2019.model.Club;
 import com.triard.asus.openproject2019.adapter.ClubItemsAdapter;
 import com.triard.asus.openproject2019.R;
 
@@ -26,7 +26,6 @@ import java.util.Collections;
 public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.Onclick {
     public static final String EXTRA_URL = "imageUrl";
     private Button mBtn_ckubFav;
-
     RecyclerView recyclerView;
     ClubItemsAdapter clubItemsAdapter;
     SharedPreferences preferences;
@@ -51,38 +50,38 @@ public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.
         getPlayers ();
     }
 
-//    add clubItemsModels to arraylist
+//    add clubs to arraylist
     private void getPlayers(){
-        ArrayList<ClubItemsModel> clubItemsModels = new ArrayList<>();
+        ArrayList<Club> clubs = new ArrayList<>();
 
-        ClubItemsModel p = new ClubItemsModel ("MU", "England", "https://upload.wikimedia.org/wikipedia/hif/f/ff/Manchester_United_FC_crest.png");
-        clubItemsModels.add(p);
+        Club p = new Club ("MU", "England", "https://upload.wikimedia.org/wikipedia/hif/f/ff/Manchester_United_FC_crest.png");
+        clubs.add(p);
 
-        p = new ClubItemsModel ("Barca", "Spain", "https://png.pngtree.com/element_our/png_detail/20181109/barcelona-logo-png_235045.jpg");
-        clubItemsModels.add(p);
+        p = new Club ("Barca", "Spain", "https://png.pngtree.com/element_our/png_detail/20181109/barcelona-logo-png_235045.jpg");
+        clubs.add(p);
 
 //        sorting
         String mShortSetting = preferences.getString ( "Sort", "Ascending" );
         if(mShortSetting.equals ( "Ascending" )){
-            Collections.sort ( clubItemsModels, ClubItemsModel.BY_TITTLE_ASCENDING );
+            Collections.sort ( clubs, Club.BY_TITTLE_ASCENDING );
         }else if(mShortSetting.equals ( "Descending" )){
-            Collections.sort ( clubItemsModels, ClubItemsModel.BY_TITTLE_DESCENDING );
+            Collections.sort ( clubs, Club.BY_TITTLE_DESCENDING );
         }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 //        onclick
-        clubItemsAdapter = new ClubItemsAdapter (this, clubItemsModels, this);
+        clubItemsAdapter = new ClubItemsAdapter (this, clubs, this);
         recyclerView.setAdapter( clubItemsAdapter );
     }
 
 //    intent untuk berpindah ke halaman detail club
     @Override
-    public void clickItem(ClubItemsModel clubItemsModel) {
+    public void clickItem(Club club) {
         Intent intent = new Intent(MainActivity.this, ClubsDetailActivity.class);
-        intent.putExtra("nama", clubItemsModel.getNama());
-        intent.putExtra("asal", clubItemsModel.getAsal());
-        intent.putExtra(EXTRA_URL, clubItemsModel.getImg());
+        intent.putExtra("nama", club.getNama());
+        intent.putExtra("asal", club.getAsal());
+        intent.putExtra(EXTRA_URL, club.getImg());
         startActivity(intent);
 
     }
@@ -99,7 +98,6 @@ public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.
                 clubItemsAdapter.getFilter().filter(s);
                 if(fileList()!=null){
                     Toast.makeText(MainActivity.this,"No Records Found!",Toast.LENGTH_LONG).show();
-
                 }
                 return false;
             }
