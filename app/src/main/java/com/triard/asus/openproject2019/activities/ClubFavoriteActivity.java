@@ -1,6 +1,7 @@
 package com.triard.asus.openproject2019.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.triard.asus.openproject2019.R;
 import com.triard.asus.openproject2019.adapter.ClubFavoriteItemAdapter;
+import com.triard.asus.openproject2019.adapter.ClubItemsAdapter;
 import com.triard.asus.openproject2019.model.Club;
 
 import java.lang.reflect.Type;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 
 public class ClubFavoriteActivity<models> extends AppCompatActivity {
 
+    public static final String EXTRA_URL = "imageUrl";
     RecyclerView recyclerView;
     ClubFavoriteItemAdapter clubFavoriteItemAdapter;
 
@@ -48,15 +51,18 @@ public class ClubFavoriteActivity<models> extends AppCompatActivity {
 
             clubFavoriteItemAdapter = new ClubFavoriteItemAdapter ( this,arr );
             recyclerView.setAdapter ( clubFavoriteItemAdapter );
+
+
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if(id==android.R.id.home){
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
+    //    intent untuk berpindah ke halaman detail club
+    public void clickitem(Club club){
+        Intent intent = new Intent ( ClubFavoriteActivity.this, ClubsDetailActivity.class );
+        intent.putExtra ( "nama", club.getNama () );
+        intent.putExtra ( "asal", club.getAsal () );
+        intent.putExtra ( EXTRA_URL, club.getImg () );
+        startActivity ( intent );
     }
+
 }
