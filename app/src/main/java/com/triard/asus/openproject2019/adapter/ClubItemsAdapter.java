@@ -53,6 +53,7 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
         Picasso.get().load( club.getImg()).into(myHolder.mImageIv);
         myHolder.bind( club, listener);
 
+//        animasi list club
         Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left);
         myHolder.itemView.startAnimation(animation);
 
@@ -127,7 +128,7 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
         }
     }
 
-    public interface Onclick{
+    public interface Onclick extends ClubFavoriteItemAdapter.Onclick {
         void clickItem(Club club);
     }
 }

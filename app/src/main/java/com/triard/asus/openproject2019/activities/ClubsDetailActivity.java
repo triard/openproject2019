@@ -21,18 +21,13 @@ public class ClubsDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_club_detail );
 
-
-        String image_detail = getIntent ().getStringExtra (EXTRA_URL);
-
         imageView  = findViewById(R.id.iv_img);
         tvNama= findViewById(R.id.tv_nama);
         tvAsal= findViewById(R.id.tv_asal);
 
-        tvNama.setText(getIntent().getStringExtra("nama"));
-        tvAsal.setText(getIntent().getStringExtra("asal"));
-
-        String image = getIntent().getStringExtra(EXTRA_URL);
-
-        Picasso.get().load(image).into(imageView);
+            tvNama.setText(getIntent().getStringExtra("nama"));
+            tvAsal.setText(getIntent().getStringExtra("asal"));
+            String image = getIntent().getStringExtra(EXTRA_URL);
+            Picasso.get().load(image).into(imageView);
     }
 }
