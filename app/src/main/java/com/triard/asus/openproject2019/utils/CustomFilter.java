@@ -21,14 +21,14 @@ public class CustomFilter extends Filter {
         FilterResults results = new FilterResults();
         if(constraint != null && constraint.length()>0){
             constraint = constraint.toString().toUpperCase();
-            ArrayList<Club> filtereClubs = new ArrayList<>();
-            for(int i=0; i<filterList.size();i++){
-                if (filterList.get(i).getStrTeam ().toUpperCase().contains(constraint)){
-                    filtereClubs.add(filterList.get(i));
+            ArrayList<Club> filterClubs = new ArrayList<>();
+            for(int i=0; i<filterList.size(); i++){
+                if (filterList.get(i).getStrTeam().toUpperCase().contains(constraint)){
+                    filterClubs.add(filterList.get(i));
                 }
             }
-            results.count = filtereClubs.size();
-            results.values = filtereClubs;
+            results.count = filterClubs.size();
+            results.values = filterClubs;
         }else {
             results.count = filterList.size();
             results.values = filterList;

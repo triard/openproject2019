@@ -38,6 +38,7 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
         this.mContext = mContext;
         this.clubs = clubs;
         this.listener = onclick;
+        this.filterList = clubs;
     }
 
     @Override
