@@ -57,7 +57,7 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
         myHolder.mIntFormedYear.setText( club.getIntFormedYear ());
         myHolder.mStrDescriptionEN.setText( club.getStrDescriptionEN ());
         Picasso.get().load( club.getStrBadgeTeam ()).into(myHolder.mImgBadgeTeam);
-        myHolder.bind( club, listener);
+        myHolder.bind(club,listener);
 
 //        animasi list club
         Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left);
@@ -135,7 +135,7 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
         }
     }
 
-    public interface Onclick extends ClubFavoriteItemAdapter.Onclick {
+    public interface Onclick {
         void clickItem(Club club);
     }
 }

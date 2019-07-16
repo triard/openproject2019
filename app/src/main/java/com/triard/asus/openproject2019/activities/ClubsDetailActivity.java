@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-//import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 import com.triard.asus.openproject2019.R;
 

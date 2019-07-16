@@ -56,9 +56,6 @@ public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.
         Club p = new Club ("MU", "https://upload.wikimedia.org/wikipedia/hif/f/ff/Manchester_United_FC_crest.png", "red devil", "1871", "EPL","old trafford", "England","Glory glory manutd");
         clubs.add(p);
 
-//        p = new Club ("Barca", "Spain", "https://png.pngtree.com/element_our/png_detail/20181109/barcelona-logo-png_235045.jpg");
-//        clubs.add(p);
-
 //        sorting
         String mShortSetting = preferences.getString ( "Sort", "Ascending" );
         if(mShortSetting.equals ( "Ascending" )){

@@ -7,8 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -20,7 +18,7 @@ import com.triard.asus.openproject2019.model.Club;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class ClubFavoriteActivity<models> extends AppCompatActivity {
+public class ClubFavoriteActivity<models> extends AppCompatActivity implements ClubFavoriteItemAdapter.Onclick {
 
     public static final String EXTRA_URL = "imageUrl";
     RecyclerView recyclerView;
@@ -32,7 +30,7 @@ public class ClubFavoriteActivity<models> extends AppCompatActivity {
         setContentView ( R.layout.activity_club_favorite );
 
 //        recyclerview
-        recyclerView = findViewById( R.id.recylerview_detail_item );
+        recyclerView = findViewById( R.id.recylerview_detail_item);
 
         //        set properties
         recyclerView.setLayoutManager ( new LinearLayoutManager ( this ) );
@@ -49,25 +47,22 @@ public class ClubFavoriteActivity<models> extends AppCompatActivity {
             }.getType ();
             ArrayList<Club> arr = gson.fromJson ( json, type );
 
-            clubFavoriteItemAdapter = new ClubFavoriteItemAdapter ( this,arr );
+            clubFavoriteItemAdapter = new ClubFavoriteItemAdapter ( this,arr,this );
             recyclerView.setAdapter ( clubFavoriteItemAdapter );
-
-
 //        }
     }
 
-    //    intent untuk berpindah ke halaman detail club
-    public void clickitem(Club club){
-        Intent intent = new Intent ( ClubFavoriteActivity.this, ClubsDetailActivity.class );
-        intent.putExtra("nama", club.getStrTeam () );
-        intent.putExtra("asal", club.getStrCountry () );
-        intent.putExtra("since", club.getIntFormedYear ());
-        intent.putExtra("nickname", club.getStrAlternate ());
-        intent.putExtra("liga", club.getStrLeague ());
-        intent.putExtra("stadium", club.getStrStadium ());
-        intent.putExtra("desc", club.getStrDescriptionEN ());
-        intent.putExtra( EXTRA_URL, club.getStrBadgeTeam () );
+    @Override
+    public void clickItem(Club clubfav) {
+        Intent intent = new Intent ( ClubFavoriteActivity.this, ClubsFavoriteDetailActivity.class );
+        intent.putExtra("namafav", clubfav.getStrTeam () );
+        intent.putExtra("asalfav", clubfav.getStrCountry () );
+        intent.putExtra("sincefav", clubfav.getIntFormedYear ());
+        intent.putExtra("nicknamefav", clubfav.getStrAlternate ());
+        intent.putExtra("ligafav", clubfav.getStrLeague ());
+        intent.putExtra("stadiumfav", clubfav.getStrStadium ());
+        intent.putExtra("descfav", clubfav.getStrDescriptionEN ());
+        intent.putExtra( EXTRA_URL, clubfav.getStrBadgeTeam () );
         startActivity(intent);
     }
-
 }

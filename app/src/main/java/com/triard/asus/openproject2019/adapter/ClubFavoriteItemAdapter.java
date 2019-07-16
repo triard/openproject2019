@@ -22,16 +22,16 @@ public class ClubFavoriteItemAdapter extends RecyclerView.Adapter<ClubFavoriteIt
     public ArrayList<Club> club_fav;
     private Onclick onclickfav;
 
-    public ClubFavoriteItemAdapter(Context context, ArrayList<Club> club_fav) {
+    public ClubFavoriteItemAdapter(Context context, ArrayList<Club> club_fav, Onclick onclick){
         this.context = context;
         this.club_fav = club_fav;
-        this.onclickfav = onclickfav;
+        this.onclickfav = onclick;
     }
 
     @Override
     public ViewHolder onCreateViewHolder( ViewGroup viewGroup, int position) {
         View view = LayoutInflater.from ( context ).inflate ( R.layout.activity_club_favorite_list_item, viewGroup, false);
-        return new ViewHolder ( view );
+        return new ViewHolder(view);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class ClubFavoriteItemAdapter extends RecyclerView.Adapter<ClubFavoriteIt
         viewHolder.vIntFormedYear.setText( club.getIntFormedYear ());
         viewHolder.vStrDescriptionEN.setText( club.getStrDescriptionEN ());
         Picasso.get().load( club.getStrBadgeTeam ()).into(viewHolder.vImgBadgeTeam);
-        viewHolder.bind( club, (ClubItemsAdapter.Onclick) onclickfav );
+        viewHolder.bind( club, onclickfav );
 
         Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
         viewHolder.itemView.startAnimation(animation);
@@ -72,16 +72,16 @@ public class ClubFavoriteItemAdapter extends RecyclerView.Adapter<ClubFavoriteIt
             this.vStrDescriptionEN = itemView.findViewById(R.id.TextViewDesc);
         }
 
-        public void bind(final Club club, final ClubItemsAdapter.Onclick listener) {
+        public void bind(final Club club, final Onclick listener) {
             itemView.setOnClickListener ( new View.OnClickListener ( ) {
                 @Override
                 public void onClick(View v) {
-                    listener.clickItem ( club );
+                    listener.clickItem (club);
                 }
             } );
         }
     }
-    public interface Onclick{
+    public interface Onclick {
         void clickItem(Club club);
     }
 }
