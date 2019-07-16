@@ -42,9 +42,9 @@ public class ClubFavoriteActivity<models> extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MODE_SHARED", Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("CLUB_FAVORITE", null);
-        if(json.isEmpty ()){
-            Toast.makeText ( ClubFavoriteActivity.this,"belum ada data",Toast.LENGTH_LONG ).show ();
-        }else {
+//        if(json.isEmpty ()){
+//            Toast.makeText ( ClubFavoriteActivity.this,"belum ada data",Toast.LENGTH_LONG ).show ();
+//        }else {
             Type type = new TypeToken<ArrayList<Club>>(){
             }.getType ();
             ArrayList<Club> arr = gson.fromJson ( json, type );
@@ -53,16 +53,21 @@ public class ClubFavoriteActivity<models> extends AppCompatActivity {
             recyclerView.setAdapter ( clubFavoriteItemAdapter );
 
 
-        }
+//        }
     }
 
     //    intent untuk berpindah ke halaman detail club
     public void clickitem(Club club){
         Intent intent = new Intent ( ClubFavoriteActivity.this, ClubsDetailActivity.class );
-        intent.putExtra ( "nama", club.getNama () );
-        intent.putExtra ( "asal", club.getAsal () );
-        intent.putExtra ( EXTRA_URL, club.getImg () );
-        startActivity ( intent );
+        intent.putExtra("nama", club.getStrTeam () );
+        intent.putExtra("asal", club.getStrCountry () );
+        intent.putExtra("since", club.getIntFormedYear ());
+        intent.putExtra("nickname", club.getStrAlternate ());
+        intent.putExtra("liga", club.getStrLeague ());
+        intent.putExtra("stadium", club.getStrStadium ());
+        intent.putExtra("desc", club.getStrDescriptionEN ());
+        intent.putExtra( EXTRA_URL, club.getStrBadgeTeam () );
+        startActivity(intent);
     }
 
 }

@@ -23,7 +23,7 @@ public class CustomFilter extends Filter {
             constraint = constraint.toString().toUpperCase();
             ArrayList<Club> filtereClubs = new ArrayList<>();
             for(int i=0; i<filterList.size();i++){
-                if (filterList.get(i).getNama().toUpperCase().contains(constraint)){
+                if (filterList.get(i).getStrTeam ().toUpperCase().contains(constraint)){
                     filtereClubs.add(filterList.get(i));
                 }
             }

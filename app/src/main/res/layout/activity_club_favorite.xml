@@ -14,7 +14,7 @@ tools:context=".activities.ClubFavoriteActivity">
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="YOUR LIST ITEM "
+    android:text="YOUR FAVOTITE CLUB"
     android:textColor="@android:color/black"
     android:textStyle="bold"
     android:gravity="center"/>

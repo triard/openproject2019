@@ -37,9 +37,14 @@ public class ClubFavoriteItemAdapter extends RecyclerView.Adapter<ClubFavoriteIt
     @Override
     public void onBindViewHolder( ViewHolder viewHolder, int position) {
         final Club club = club_fav.get(position);
-        viewHolder.vNama.setText( club.getNama());
-        viewHolder.vAsal.setText( club.getAsal());
-        Picasso.get().load( club.getImg()).into(viewHolder.vImageIv);
+        viewHolder.vStrTeam.setText( club.getStrTeam ());
+        viewHolder.vStrCountry.setText( club.getStrCountry ());
+        viewHolder.vStrAlternate.setText( club.getStrAlternate ());
+        viewHolder.vStrLeague.setText( club.getStrLeague ());
+        viewHolder.vStrStadium.setText( club.getStrStadium ());
+        viewHolder.vIntFormedYear.setText( club.getIntFormedYear ());
+        viewHolder.vStrDescriptionEN.setText( club.getStrDescriptionEN ());
+        Picasso.get().load( club.getStrBadgeTeam ()).into(viewHolder.vImgBadgeTeam);
         viewHolder.bind( club, (ClubItemsAdapter.Onclick) onclickfav );
 
         Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
@@ -52,14 +57,19 @@ public class ClubFavoriteItemAdapter extends RecyclerView.Adapter<ClubFavoriteIt
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView vImageIv;
-        TextView vNama, vAsal;
+        ImageView vImgBadgeTeam;
+        TextView vStrTeam,vStrCountry,vStrAlternate,vIntFormedYear,vStrLeague, vStrStadium ,vStrDescriptionEN;
 
         public ViewHolder( View itemView) {
             super ( itemView );
-            this.vImageIv = itemView.findViewById ( R.id.ImageViewFavorite );
-            this.vNama = itemView.findViewById ( R.id.TextViewNamaFavorite );
-            this.vAsal = itemView.findViewById ( R.id.TextViewAsalFavorite );
+            this.vImgBadgeTeam = itemView.findViewById ( R.id.ImageViewFavorite );
+            this.vStrTeam = itemView.findViewById ( R.id.TextViewNamaFavorite );
+            this.vStrCountry = itemView.findViewById ( R.id.TextViewAsalFavorite );
+            this.vStrAlternate = itemView.findViewById(R.id.TextViewAlternate);
+            this.vStrLeague = itemView.findViewById(R.id.TextViewLegaue);
+            this.vStrStadium = itemView.findViewById(R.id.TextViewStadium);
+            this.vIntFormedYear = itemView.findViewById(R.id.TextViewSince);
+            this.vStrDescriptionEN = itemView.findViewById(R.id.TextViewDesc);
         }
 
         public void bind(final Club club, final ClubItemsAdapter.Onclick listener) {

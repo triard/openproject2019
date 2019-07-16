@@ -22,6 +22,7 @@ import com.triard.asus.openproject2019.model.Club;
 import com.triard.asus.openproject2019.utils.CustomFilter;
 import com.triard.asus.openproject2019.R;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
 
 public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.ViewHolder> implements Filterable {
@@ -48,9 +49,14 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder myHolder, int position) {
         final Club club = clubs.get(position);
-        myHolder.mNama.setText( club.getNama());
-        myHolder.mAsal.setText( club.getAsal());
-        Picasso.get().load( club.getImg()).into(myHolder.mImageIv);
+        myHolder.mStrTeam.setText( club.getStrTeam ());
+        myHolder.mStrCountry.setText( club.getStrCountry ());
+        myHolder.mStrStadium.setText( club.getStrStadium ());
+        myHolder.mStrLeague.setText( club.getStrLeague ());
+        myHolder.mStrAlternate.setText( club.getStrAlternate());
+        myHolder.mIntFormedYear.setText( club.getIntFormedYear ());
+        myHolder.mStrDescriptionEN.setText( club.getStrDescriptionEN ());
+        Picasso.get().load( club.getStrBadgeTeam ()).into(myHolder.mImgBadgeTeam);
         myHolder.bind( club, listener);
 
 //        animasi list club
@@ -71,15 +77,11 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
                     String jsonString = gson.toJson(getSelectedString());
                     editor.putString( "CLUB_FAVORITE",jsonString);
                     editor.commit ();
-//                    System.out.println("JSON : " + jsonString);
-//                    System.out.println("SIZE : " + listItemChosen.size());
                 }else{
                     itemSelected.remove( club );
                     String jsonString = gson.toJson(getSelectedString());
                     editor.putString( "CLUB_FAVORITE",jsonString);
                     editor.commit ();
-//                    System.out.println("JSON : " + jsonString);
-//                    System.out.println("SIZE : " + listItemChosen.size());
                 }
             }
         } );
@@ -105,14 +107,19 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public CheckBox cbItem;
-        ImageView mImageIv;
-        TextView mNama, mAsal;
+        ImageView mImgBadgeTeam;
+        TextView mStrTeam,mStrCountry,mStrAlternate,mIntFormedYear,mStrLeague, mStrStadium ,mStrDescriptionEN;
 
         public ViewHolder(View itemview) {
             super(itemview);
-            this.mImageIv = itemview.findViewById(R.id.ImageView);
-            this.mNama = itemview.findViewById(R.id.TextViewNama);
-            this.mAsal = itemview.findViewById(R.id.TextViewAsal);
+            this.mImgBadgeTeam = itemview.findViewById(R.id.ImageView);
+            this.mStrTeam = itemview.findViewById(R.id.TextViewNama);
+            this.mStrCountry = itemview.findViewById(R.id.TextViewAsal);
+            this.mStrAlternate = itemview.findViewById(R.id.TextViewAlternate);
+            this.mStrLeague = itemview.findViewById(R.id.TextViewLegaue);
+            this.mStrStadium = itemview.findViewById(R.id.TextViewStadium);
+            this.mIntFormedYear = itemview.findViewById(R.id.TextViewSince);
+            this.mStrDescriptionEN = itemview.findViewById(R.id.TextViewDesc);
             this.cbItem = itemview.findViewById ( R.id.cb_favorite);
         }
 

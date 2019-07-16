@@ -14,7 +14,7 @@ import static com.triard.asus.openproject2019.activities.MainActivity.EXTRA_URL;
 public class ClubsDetailActivity extends AppCompatActivity {
 
     ImageView imageView;
-    TextView tvNama, tvAsal;
+    TextView tvTeam, tvCountry, tvAlternate,tvFormedYear,tvLeague, tvStadium ,tvDescriptionEN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +22,22 @@ public class ClubsDetailActivity extends AppCompatActivity {
         setContentView( R.layout.activity_club_detail );
 
         imageView  = findViewById(R.id.iv_img);
-        tvNama= findViewById(R.id.tv_nama);
-        tvAsal= findViewById(R.id.tv_asal);
+        tvTeam= findViewById(R.id.tv_nama);
+        tvCountry= findViewById(R.id.tv_asal);
+        tvAlternate = findViewById ( R.id.tv_nickname );
+        tvFormedYear= findViewById(R.id.tv_since);
+        tvLeague= findViewById(R.id.tv_league);
+        tvStadium= findViewById(R.id.tv_stadium);
+        tvDescriptionEN= findViewById(R.id.tv_desc);
 
-            tvNama.setText(getIntent().getStringExtra("nama"));
-            tvAsal.setText(getIntent().getStringExtra("asal"));
-            String image = getIntent().getStringExtra(EXTRA_URL);
-            Picasso.get().load(image).into(imageView);
+        tvTeam.setText(getIntent().getStringExtra("nama"));
+        tvCountry.setText(getIntent().getStringExtra("asal"));
+        tvAlternate.setText ( getIntent ().getStringExtra ( "nickname" ) );
+        tvFormedYear.setText(getIntent().getStringExtra("since"));
+        tvLeague.setText(getIntent().getStringExtra("liga"));
+        tvStadium.setText(getIntent().getStringExtra("stadium"));
+        tvDescriptionEN.setText(getIntent().getStringExtra("desc"));
+        String image = getIntent().getStringExtra(EXTRA_URL);
+        Picasso.get().load(image).into(imageView);
     }
 }

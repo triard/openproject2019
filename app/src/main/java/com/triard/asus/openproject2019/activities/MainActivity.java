@@ -53,11 +53,11 @@ public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.
     private void getPlayers(){
         ArrayList<Club> clubs = new ArrayList<>();
 
-        Club p = new Club ("MU", "England", "https://upload.wikimedia.org/wikipedia/hif/f/ff/Manchester_United_FC_crest.png");
+        Club p = new Club ("MU", "https://upload.wikimedia.org/wikipedia/hif/f/ff/Manchester_United_FC_crest.png", "red devil", "1871", "EPL","old trafford", "England","Glory glory manutd");
         clubs.add(p);
 
-        p = new Club ("Barca", "Spain", "https://png.pngtree.com/element_our/png_detail/20181109/barcelona-logo-png_235045.jpg");
-        clubs.add(p);
+//        p = new Club ("Barca", "Spain", "https://png.pngtree.com/element_our/png_detail/20181109/barcelona-logo-png_235045.jpg");
+//        clubs.add(p);
 
 //        sorting
         String mShortSetting = preferences.getString ( "Sort", "Ascending" );
@@ -78,9 +78,14 @@ public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.
     @Override
     public void clickItem(Club club) {
         Intent intent = new Intent(MainActivity.this, ClubsDetailActivity.class);
-        intent.putExtra("nama", club.getNama());
-        intent.putExtra("asal", club.getAsal());
-        intent.putExtra(EXTRA_URL, club.getImg());
+        intent.putExtra("nama", club.getStrTeam ());
+        intent.putExtra("asal", club.getStrCountry ());
+        intent.putExtra("since", club.getIntFormedYear ());
+        intent.putExtra("nickname", club.getStrAlternate ());
+        intent.putExtra("liga", club.getStrLeague ());
+        intent.putExtra("stadium", club.getStrStadium ());
+        intent.putExtra("desc", club.getStrDescriptionEN ());
+        intent.putExtra(EXTRA_URL, club.getStrBadgeTeam ());
         startActivity(intent);
 
     }
