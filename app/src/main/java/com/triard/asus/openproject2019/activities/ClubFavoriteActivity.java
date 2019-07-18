@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -35,21 +36,19 @@ public class ClubFavoriteActivity<models> extends AppCompatActivity implements C
         //        set properties
         recyclerView.setLayoutManager ( new LinearLayoutManager ( this ) );
 
-
         //start convert the string value to array
         SharedPreferences sharedPreferences = getSharedPreferences("MODE_SHARED", Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("CLUB_FAVORITE", null);
-//        if(json.isEmpty ()){
-//            Toast.makeText ( ClubFavoriteActivity.this,"belum ada data",Toast.LENGTH_LONG ).show ();
-//        }else {
+        if (json==null) {
+            Toast.makeText( ClubFavoriteActivity.this,"No Records Found!",Toast.LENGTH_SHORT ).show ();
+        } else {
             Type type = new TypeToken<ArrayList<Club>>(){
             }.getType ();
             ArrayList<Club> arr = gson.fromJson ( json, type );
-
             clubFavoriteItemAdapter = new ClubFavoriteItemAdapter ( this,arr,this );
             recyclerView.setAdapter ( clubFavoriteItemAdapter );
-//        }
+        }
     }
 
     @Override
