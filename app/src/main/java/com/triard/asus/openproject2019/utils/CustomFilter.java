@@ -11,6 +11,7 @@ public class CustomFilter extends Filter {
     ClubItemsAdapter adapter;
     ArrayList<Club> filterList;
 
+
     public CustomFilter(ArrayList<Club> filterList, ClubItemsAdapter adapter) {
         this.adapter = adapter;
         this.filterList = filterList;

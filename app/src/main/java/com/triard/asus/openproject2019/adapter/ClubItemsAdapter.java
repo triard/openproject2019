@@ -2,7 +2,6 @@ package com.triard.asus.openproject2019.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +21,9 @@ import com.triard.asus.openproject2019.model.Club;
 import com.triard.asus.openproject2019.utils.CustomFilter;
 import com.triard.asus.openproject2019.R;
 
-import java.text.BreakIterator;
 import java.util.ArrayList;
+
+import retrofit2.Callback;
 
 public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.ViewHolder> implements Filterable {
 
@@ -34,12 +34,14 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
     CustomFilter filter;
     ArrayList<Club> itemSelected = new ArrayList<>();
 
+
     public ClubItemsAdapter(Context mContext, ArrayList<Club> clubs, Onclick onclick) {
         this.mContext = mContext;
         this.clubs = clubs;
         this.listener = onclick;
         this.filterList = clubs;
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int position) {
@@ -50,14 +52,16 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder myHolder, int position) {
         final Club club = clubs.get(position);
+        myHolder.mStrIdTeam.setText( club.getIdTeam ());
         myHolder.mStrTeam.setText( club.getStrTeam ());
-        myHolder.mStrCountry.setText( club.getStrCountry ());
-        myHolder.mStrStadium.setText( club.getStrStadium ());
+        myHolder.mStrIdLiga.setText( club.getIdLeague ());
         myHolder.mStrLeague.setText( club.getStrLeague ());
-        myHolder.mStrAlternate.setText( club.getStrAlternate());
-        myHolder.mIntFormedYear.setText( club.getIntFormedYear ());
-        myHolder.mStrDescriptionEN.setText( club.getStrDescriptionEN ());
-        Picasso.get().load( club.getStrBadgeTeam ()).into(myHolder.mImgBadgeTeam);
+        myHolder.mStrStadium.setText( club.getStrStadiumLocation ());
+              myHolder.mStrCountry.setText( club.getStrCountry ());
+      myHolder.mStrAlternate.setText( club.getStrAlternate());
+      myHolder.mIntFormedYear.setText( club.getIntFormedYear ());
+      myHolder.mStrDescriptionEN.setText( club.getStrDescriptionEN ());
+        Picasso.get().load( club.getStrTeamBadge ()).into(myHolder.mImgBadgeTeam);
         myHolder.bind(club,listener);
 
 //        animasi list club
@@ -109,16 +113,19 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
 
         public CheckBox cbItem;
         ImageView mImgBadgeTeam;
-        TextView mStrTeam,mStrCountry,mStrAlternate,mIntFormedYear,mStrLeague, mStrStadium ,mStrDescriptionEN;
+        TextView mStrIdTeam,mStrIdLiga,mStrTeam,mStrCountry,mStrAlternate,mIntFormedYear,mStrLeague, mStrStadium ,mStrDescriptionEN;
 
         public ViewHolder(View itemview) {
             super(itemview);
-            this.mImgBadgeTeam = itemview.findViewById(R.id.ImageView);
+
+            this.mStrIdTeam = itemview.findViewById(R.id.TextViewIdTeam);
             this.mStrTeam = itemview.findViewById(R.id.TextViewNama);
-            this.mStrCountry = itemview.findViewById(R.id.TextViewAsal);
-            this.mStrAlternate = itemview.findViewById(R.id.TextViewAlternate);
+            this.mStrIdLiga = itemview.findViewById(R.id.TextViewIdLiga);
             this.mStrLeague = itemview.findViewById(R.id.TextViewLegaue);
             this.mStrStadium = itemview.findViewById(R.id.TextViewStadium);
+            this.mImgBadgeTeam = itemview.findViewById(R.id.ImageView);
+            this.mStrCountry = itemview.findViewById(R.id.TextViewAsal);
+            this.mStrAlternate = itemview.findViewById(R.id.TextViewAlternate);
             this.mIntFormedYear = itemview.findViewById(R.id.TextViewSince);
             this.mStrDescriptionEN = itemview.findViewById(R.id.TextViewDesc);
             this.cbItem = itemview.findViewById ( R.id.cb_favorite);

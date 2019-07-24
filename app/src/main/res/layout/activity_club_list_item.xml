@@ -88,6 +88,24 @@
                     android:textSize="10dp"
                     android:text="asal club"
                     android:visibility="gone"/>
+            <TextView
+                android:id="@+id/TextViewIdTeam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginLeft="5dp"
+                android:textSize="10dp"
+                android:text="asal club"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/TextViewIdLiga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginLeft="5dp"
+                android:textSize="10dp"
+                android:text="asal club"
+                android:visibility="gone"/>
 
      <CheckBox
         android:id="@+id/cb_favorite"

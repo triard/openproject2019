@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
     private static Retrofit retrofit;
-    private  static  final String BASE_URL = "https://www.thesportsdb.com/api/v1/json/1";
+    private  static  final String BASE_URL = "https://thesportdb.herokuapp.com";
 
     public static Retrofit getClient(){
         if(retrofit == null){
