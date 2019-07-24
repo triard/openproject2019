@@ -56,11 +56,11 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
         myHolder.mStrTeam.setText( club.getStrTeam ());
         myHolder.mStrIdLiga.setText( club.getIdLeague ());
         myHolder.mStrLeague.setText( club.getStrLeague ());
-//      myHolder.mStrCountry.setText( club.getStrCountry ());
         myHolder.mStrStadium.setText( club.getStrStadiumLocation ());
-//      myHolder.mStrAlternate.setText( club.getStrAlternate());
-//      myHolder.mIntFormedYear.setText( club.getIntFormedYear ());
-//      myHolder.mStrDescriptionEN.setText( club.getStrDescriptionEN ());
+              myHolder.mStrCountry.setText( club.getStrCountry ());
+      myHolder.mStrAlternate.setText( club.getStrAlternate());
+      myHolder.mIntFormedYear.setText( club.getIntFormedYear ());
+      myHolder.mStrDescriptionEN.setText( club.getStrDescriptionEN ());
         Picasso.get().load( club.getStrTeamBadge ()).into(myHolder.mImgBadgeTeam);
         myHolder.bind(club,listener);
 
@@ -124,12 +124,10 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
             this.mStrLeague = itemview.findViewById(R.id.TextViewLegaue);
             this.mStrStadium = itemview.findViewById(R.id.TextViewStadium);
             this.mImgBadgeTeam = itemview.findViewById(R.id.ImageView);
-            //            this.mStrCountry = itemview.findViewById(R.id.TextViewAsal);
-//            this.mStrAlternate = itemview.findViewById(R.id.TextViewAlternate);
-
-
-//            this.mIntFormedYear = itemview.findViewById(R.id.TextViewSince);
-//            this.mStrDescriptionEN = itemview.findViewById(R.id.TextViewDesc);
+            this.mStrCountry = itemview.findViewById(R.id.TextViewAsal);
+            this.mStrAlternate = itemview.findViewById(R.id.TextViewAlternate);
+            this.mIntFormedYear = itemview.findViewById(R.id.TextViewSince);
+            this.mStrDescriptionEN = itemview.findViewById(R.id.TextViewDesc);
             this.cbItem = itemview.findViewById ( R.id.cb_favorite);
         }
 

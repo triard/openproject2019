@@ -110,13 +110,13 @@ public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.
         Intent intent = new Intent(MainActivity.this, ClubsDetailActivity.class);
         intent.putExtra("idteam", club.getIdTeam ());
         intent.putExtra("nama", club.getStrTeam ());
-//        intent.putExtra("asal", club.getStrCountry ());
-//        intent.putExtra("since", club.getIntFormedYear ());
-//        intent.putExtra("nickname", club.getStrAlternate ());
+        intent.putExtra("asal", club.getStrCountry ());
+        intent.putExtra("since", club.getIntFormedYear ());
+        intent.putExtra("nickname", club.getStrAlternate ());
         intent.putExtra("idleague", club.getIdLeague ());
         intent.putExtra("liga", club.getStrLeague ());
         intent.putExtra("stadium", club.getStrStadiumLocation ());
-//        intent.putExtra("desc", club.getStrDescriptionEN ());
+        intent.putExtra("desc", club.getStrDescriptionEN ());
         intent.putExtra(EXTRA_URL, club.getStrTeamBadge ());
         startActivity(intent);
 

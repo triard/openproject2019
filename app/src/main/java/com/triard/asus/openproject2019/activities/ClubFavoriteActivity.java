@@ -55,13 +55,13 @@ public class ClubFavoriteActivity<models> extends AppCompatActivity implements C
         Intent intent = new Intent ( ClubFavoriteActivity.this, ClubsFavoriteDetailActivity.class );
         intent.putExtra("idteamfav", clubfav.getIdTeam ());
         intent.putExtra("namafav", clubfav.getStrTeam () );
-//        intent.putExtra("asalfav", clubfav.getStrCountry () );
-//        intent.putExtra("sincefav", clubfav.getIntFormedYear ());
-//        intent.putExtra("nicknamefav", clubfav.getStrAlternate ());
+        intent.putExtra("asalfav", clubfav.getStrCountry () );
+        intent.putExtra("sincefav", clubfav.getIntFormedYear ());
+        intent.putExtra("nicknamefav", clubfav.getStrAlternate ());
         intent.putExtra("idligafav", clubfav.getIdTeam ());
         intent.putExtra("ligafav", clubfav.getStrLeague ());
         intent.putExtra("stadiumfav", clubfav.getStrStadiumLocation ());
-//        intent.putExtra("descfav", clubfav.getStrDescriptionEN ());
+        intent.putExtra("descfav", clubfav.getStrDescriptionEN ());
         intent.putExtra( EXTRA_URL, clubfav.getStrTeamBadge () );
         startActivity(intent);
     }

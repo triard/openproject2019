@@ -17,14 +17,14 @@ public class Club {
     private String strStadiumLocation;
     @SerializedName("strTeamBadge")
     private String strTeamBadge;
-//    @SerializedName("strAlternate")
-//    private String strAlternate;
-//    @SerializedName("intFormedYear")
-//    private String intFormedYear;
-//    @SerializedName("strCountry")
-//    private String strCountry;
-//    @SerializedName("strDescriptionEN")
-//    private String strDescriptionEN;
+    @SerializedName("strAlternate")
+    private String strAlternate;
+    @SerializedName("intFormedYear")
+    private String intFormedYear;
+    @SerializedName("strCountry")
+    private String strCountry;
+    @SerializedName("strDescriptionEN")
+    private String strDescriptionEN;
 
 
     public Club() {
@@ -93,38 +93,38 @@ public class Club {
     }
 
 
-//
-//    public String getStrAlternate() {
-//        return strAlternate;
-//    }
-//
-//    public void setStrAlternate(String strAlternate) {
-//        this.strAlternate = strAlternate;
-//    }
-//
-//    public String getIntFormedYear() {
-//        return intFormedYear;
-//    }
-//
-//    public void setIntFormedYear(String intFormedYear) {
-//        this.intFormedYear = intFormedYear;
-//    }
-//
-//    public String getStrCountry() {
-//        return strCountry;
-//    }
-//
-//    public void setStrCountry(String strCountry) {
-//        this.strCountry = strCountry;
-//    }
-//
-//    public String getStrDescriptionEN() {
-//        return strDescriptionEN;
-//    }
-//
-//    public void setStrDescriptionEN(String strDescriptionEN) {
-//        this.strDescriptionEN = strDescriptionEN;
-//    }
+
+    public String getStrAlternate() {
+        return strAlternate;
+    }
+
+    public void setStrAlternate(String strAlternate) {
+        this.strAlternate = strAlternate;
+    }
+
+    public String getIntFormedYear() {
+        return intFormedYear;
+    }
+
+    public void setIntFormedYear(String intFormedYear) {
+        this.intFormedYear = intFormedYear;
+    }
+
+    public String getStrCountry() {
+        return strCountry;
+    }
+
+    public void setStrCountry(String strCountry) {
+        this.strCountry = strCountry;
+    }
+
+    public String getStrDescriptionEN() {
+        return strDescriptionEN;
+    }
+
+    public void setStrDescriptionEN(String strDescriptionEN) {
+        this.strDescriptionEN = strDescriptionEN;
+    }
 
     public static final Comparator<Club> BY_TITTLE_ASCENDING = new Comparator<Club> ( ) {
 

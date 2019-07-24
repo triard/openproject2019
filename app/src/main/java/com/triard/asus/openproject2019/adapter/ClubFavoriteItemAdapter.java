@@ -42,12 +42,12 @@ public class ClubFavoriteItemAdapter extends RecyclerView.Adapter<ClubFavoriteIt
         viewHolder.vStrIdteam.setText( club.getIdTeam ());
         viewHolder.vStrIdLiga.setText( club.getIdLeague ());
         viewHolder.vStrTeam.setText( club.getStrTeam ());
-//        viewHolder.vStrCountry.setText( club.getStrCountry ());
-//        viewHolder.vStrAlternate.setText( club.getStrAlternate ());
+        viewHolder.vStrCountry.setText( club.getStrCountry ());
+        viewHolder.vStrAlternate.setText( club.getStrAlternate ());
         viewHolder.vStrLeague.setText( club.getStrLeague ());
         viewHolder.vStrStadium.setText( club.getStrStadiumLocation ());
-//        viewHolder.vIntFormedYear.setText( club.getIntFormedYear ());
-//        viewHolder.vStrDescriptionEN.setText( club.getStrDescriptionEN ());
+        viewHolder.vIntFormedYear.setText( club.getIntFormedYear ());
+        viewHolder.vStrDescriptionEN.setText( club.getStrDescriptionEN ());
         Picasso.get().load( club.getStrTeamBadge ()).into(viewHolder.vImgBadgeTeam);
         viewHolder.bind( club, onclickfav );
 
