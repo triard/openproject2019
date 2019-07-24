@@ -8,6 +8,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface ClubService {
-    @GET("/search_all_teams.php?l=English%20Premier%20League")
+    @GET("/club")
     Call<ArrayList<Club>> getAllClub();
 }

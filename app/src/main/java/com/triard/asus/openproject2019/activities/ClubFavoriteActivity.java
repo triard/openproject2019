@@ -13,7 +13,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.triard.asus.openproject2019.R;
 import com.triard.asus.openproject2019.adapter.ClubFavoriteItemAdapter;
-import com.triard.asus.openproject2019.adapter.ClubItemsAdapter;
 import com.triard.asus.openproject2019.model.Club;
 
 import java.lang.reflect.Type;
@@ -54,14 +53,16 @@ public class ClubFavoriteActivity<models> extends AppCompatActivity implements C
     @Override
     public void clickItem(Club clubfav) {
         Intent intent = new Intent ( ClubFavoriteActivity.this, ClubsFavoriteDetailActivity.class );
+        intent.putExtra("idteamfav", clubfav.getIdTeam ());
         intent.putExtra("namafav", clubfav.getStrTeam () );
-        intent.putExtra("asalfav", clubfav.getStrCountry () );
-        intent.putExtra("sincefav", clubfav.getIntFormedYear ());
-        intent.putExtra("nicknamefav", clubfav.getStrAlternate ());
+//        intent.putExtra("asalfav", clubfav.getStrCountry () );
+//        intent.putExtra("sincefav", clubfav.getIntFormedYear ());
+//        intent.putExtra("nicknamefav", clubfav.getStrAlternate ());
+        intent.putExtra("idligafav", clubfav.getIdTeam ());
         intent.putExtra("ligafav", clubfav.getStrLeague ());
-        intent.putExtra("stadiumfav", clubfav.getStrStadium ());
-        intent.putExtra("descfav", clubfav.getStrDescriptionEN ());
-        intent.putExtra( EXTRA_URL, clubfav.getStrBadgeTeam () );
+        intent.putExtra("stadiumfav", clubfav.getStrStadiumLocation ());
+//        intent.putExtra("descfav", clubfav.getStrDescriptionEN ());
+        intent.putExtra( EXTRA_URL, clubfav.getStrTeamBadge () );
         startActivity(intent);
     }
 }

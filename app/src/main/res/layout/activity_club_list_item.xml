@@ -34,24 +34,24 @@
          android:textSize="15dp"
          android:text="nama club"
          />
-     <TextView
-         android:id="@+id/TextViewAsal"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:textColor="@color/colorPrimaryDark"
-         android:layout_marginLeft="5dp"
-         android:textSize="10dp"
-         android:text="asal club"/>
+     <!--<TextView-->
+         <!--android:id="@+id/TextViewAsal"-->
+         <!--android:layout_width="wrap_content"-->
+         <!--android:layout_height="wrap_content"-->
+         <!--android:textColor="@color/colorPrimaryDark"-->
+         <!--android:layout_marginLeft="5dp"-->
+         <!--android:textSize="10dp"-->
+         <!--android:text="asal club"/>-->
 
-                <TextView
-                    android:id="@+id/TextViewAlternate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="10dp"
-                    android:text="asal club"
-                    android:visibility="gone"/>
+                <!--<TextView-->
+                    <!--android:id="@+id/TextViewAlternate"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="@color/colorPrimaryDark"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:textSize="10dp"-->
+                    <!--android:text="asal club"-->
+                    <!--android:visibility="gone"/>-->
                 <TextView
                     android:id="@+id/TextViewLegaue"
                     android:layout_width="wrap_content"
@@ -70,24 +70,42 @@
                     android:textSize="10dp"
                     android:text="asal club"
                     android:visibility="gone"/>
-                <TextView
-                    android:id="@+id/TextViewSince"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="10dp"
-                    android:text="asal club"
-                    android:visibility="gone"/>
-                <TextView
-                    android:id="@+id/TextViewDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="10dp"
-                    android:text="asal club"
-                    android:visibility="gone"/>
+                <!--<TextView-->
+                    <!--android:id="@+id/TextViewSince"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="@color/colorPrimaryDark"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:textSize="10dp"-->
+                    <!--android:text="asal club"-->
+                    <!--android:visibility="gone"/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/TextViewDesc"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="@color/colorPrimaryDark"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:textSize="10dp"-->
+                    <!--android:text="asal club"-->
+                    <!--android:visibility="gone"/>-->
+            <TextView
+                android:id="@+id/TextViewIdTeam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginLeft="5dp"
+                android:textSize="10dp"
+                android:text="asal club"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/TextViewIdLiga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginLeft="5dp"
+                android:textSize="10dp"
+                android:text="asal club"
+                android:visibility="gone"/>
 
      <CheckBox
         android:id="@+id/cb_favorite"

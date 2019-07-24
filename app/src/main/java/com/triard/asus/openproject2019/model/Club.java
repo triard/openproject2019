@@ -1,20 +1,55 @@
 package com.triard.asus.openproject2019.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Comparator;
 
 public class Club {
-    private String strTeam, strBadgeTeam, strAlternate,intFormedYear,strLeague, strStadium ,strCountry,strDescriptionEN;
+    @SerializedName("idTeam")
+    private String idTeam;
+    @SerializedName("strTeam")
+    private String strTeam;
+    @SerializedName("idLeague")
+    private String idLeague;
+    @SerializedName("strLeague")
+    private String strLeague;
+    @SerializedName("strStadiumLocation")
+    private String strStadiumLocation;
+    @SerializedName("strTeamBadge")
+    private String strTeamBadge;
+//    @SerializedName("strAlternate")
+//    private String strAlternate;
+//    @SerializedName("intFormedYear")
+//    private String intFormedYear;
+//    @SerializedName("strCountry")
+//    private String strCountry;
+//    @SerializedName("strDescriptionEN")
+//    private String strDescriptionEN;
 
 
-    public Club(String strTeam, String strBadgeTeam, String strAlternate, String intFormedYear, String strLeague, String strStadium, String strCountry, String strDescriptionEN) {
+    public Club() {
+    }
+
+//    , String strAlternate, String intFormedYear, String strCountry, String strDescriptionEN
+    public Club(String idTeam, String strTeam, String idLeague, String strLeague, String strStadiumLocation, String strTeamBadge) {
+        this.idTeam = idTeam;
         this.strTeam = strTeam;
-        this.strBadgeTeam = strBadgeTeam;
-        this.strAlternate = strAlternate;
-        this.intFormedYear = intFormedYear;
+        this.idLeague = idLeague;
         this.strLeague = strLeague;
-        this.strStadium = strStadium;
-        this.strCountry = strCountry;
-        this.strDescriptionEN = strDescriptionEN;
+        this.strStadiumLocation = strStadiumLocation;
+        this.strTeamBadge = strTeamBadge;
+//        this.strAlternate = strAlternate;
+//        this.intFormedYear = intFormedYear;
+//        this.strCountry = strCountry;
+//        this.strDescriptionEN = strDescriptionEN;
+    }
+
+    public String getIdTeam() {
+        return idTeam;
+    }
+
+    public void setId(String idTeam) {
+        this.idTeam = idTeam;
     }
 
     public String getStrTeam() {
@@ -25,28 +60,12 @@ public class Club {
         this.strTeam = strTeam;
     }
 
-    public String getStrBadgeTeam() {
-        return strBadgeTeam;
+    public String getIdLeague() {
+        return idLeague;
     }
 
-    public void setStrBadgeTeam(String strBadgeTeam) {
-        this.strBadgeTeam = strBadgeTeam;
-    }
-
-    public String getStrAlternate() {
-        return strAlternate;
-    }
-
-    public void setStrAlternate(String strAlternate) {
-        this.strAlternate = strAlternate;
-    }
-
-    public String getIntFormedYear() {
-        return intFormedYear;
-    }
-
-    public void setIntFormedYear(String intFormedYear) {
-        this.intFormedYear = intFormedYear;
+    public void setIdLeague(String idLeague) {
+        this.idLeague = idLeague;
     }
 
     public String getStrLeague() {
@@ -57,43 +76,69 @@ public class Club {
         this.strLeague = strLeague;
     }
 
-    public String getStrStadium() {
-        return strStadium;
+    public String getStrStadiumLocation() {
+        return strStadiumLocation;
     }
 
-    public void setStrStadium(String strStadium) {
-        this.strStadium = strStadium;
+    public void setStrStadiumLocation(String strStadiumLocation) {
+        this.strStadiumLocation = strStadiumLocation;
     }
 
-    public String getStrCountry() {
-        return strCountry;
+    public String getStrTeamBadge() {
+        return strTeamBadge;
     }
 
-    public void setStrCountry(String strCountry) {
-        this.strCountry = strCountry;
+    public void setStrTeamBadge(String strTeamBadge) {
+        this.strTeamBadge = strTeamBadge;
     }
 
-    public String getStrDescriptionEN() {
-        return strDescriptionEN;
-    }
 
-    public void setStrDescriptionEN(String strDescriptionEN) {
-        this.strDescriptionEN = strDescriptionEN;
-    }
+//
+//    public String getStrAlternate() {
+//        return strAlternate;
+//    }
+//
+//    public void setStrAlternate(String strAlternate) {
+//        this.strAlternate = strAlternate;
+//    }
+//
+//    public String getIntFormedYear() {
+//        return intFormedYear;
+//    }
+//
+//    public void setIntFormedYear(String intFormedYear) {
+//        this.intFormedYear = intFormedYear;
+//    }
+//
+//    public String getStrCountry() {
+//        return strCountry;
+//    }
+//
+//    public void setStrCountry(String strCountry) {
+//        this.strCountry = strCountry;
+//    }
+//
+//    public String getStrDescriptionEN() {
+//        return strDescriptionEN;
+//    }
+//
+//    public void setStrDescriptionEN(String strDescriptionEN) {
+//        this.strDescriptionEN = strDescriptionEN;
+//    }
 
-    public  static final Comparator<Club> BY_TITTLE_ASCENDING = new Comparator<Club> ( ) {
+    public static final Comparator<Club> BY_TITTLE_ASCENDING = new Comparator<Club> ( ) {
 
         @Override
         public int compare(Club o1, Club o2) {
-            return o1.getStrTeam ().compareTo ( o2.getStrTeam () );
+            return o1.getStrTeam ( ).compareTo ( o2.getStrTeam ( ) );
         }
     };
 
-    public  static final Comparator<Club> BY_TITTLE_DESCENDING = new Comparator<Club> ( ) {
+    public static final Comparator<Club> BY_TITTLE_DESCENDING = new Comparator<Club> ( ) {
 
         @Override
         public int compare(Club o1, Club o2) {
-            return o2.getStrTeam ().compareTo ( o1.getStrTeam () );
+            return o2.getStrTeam ( ).compareTo ( o1.getStrTeam ( ) );
         }
     };
 }
