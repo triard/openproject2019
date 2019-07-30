@@ -40,16 +40,14 @@ public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.
     private ArrayList<Club> clubs = new ArrayList<> (  ) ;
     private static final String TAG = MainActivity.class.getName();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
 
-        preferences = this.getSharedPreferences ( "MY_DATA", MODE_PRIVATE );
-
         recyclerView = findViewById ( R.id.recycler_view );
         recyclerView.setLayoutManager ( new LinearLayoutManager ( getApplicationContext ( ), LinearLayoutManager.VERTICAL, false ) );
+        preferences = this.getSharedPreferences ( "MY_DATA", MODE_PRIVATE );
         mBtn_ckubFav = (Button) findViewById ( R.id.btn_ckubFav );
         mBtn_ckubFav.setOnClickListener ( new View.OnClickListener ( ) {
             @Override
@@ -58,12 +56,9 @@ public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.
                 startActivity ( i );
             }
         } );
-        //      membuat koneksi ke ClubService
         clubService = ApiClient.getClient ().create(ClubService.class);
         getAllClub ( );
     }
-
-
 
 //    add clubs to arraylist
       public void getAllClub(){
@@ -86,25 +81,17 @@ public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.
 
     private void Data() {
 
-//        onclick
         clubItemsAdapter = new ClubItemsAdapter (this,clubs , this);
         recyclerView.setAdapter( clubItemsAdapter );
 
-
-
-
-
-
-        //        sorting
-        String mShortSetting = preferences.getString ( "Sort", "Ascending" );
-        if(mShortSetting.equals ( "Ascending" )){
+        String sortSetting = preferences.getString ( "Sort", "Ascending" );
+        if(sortSetting.equals ( "Ascending" )){
             Collections.sort (clubs , Club.BY_TITTLE_ASCENDING );
-        }else if(mShortSetting.equals ( "Descending" )){
+        }else if(sortSetting.equals ( "Descending" )){
             Collections.sort (clubs , Club.BY_TITTLE_DESCENDING );
         }
     }
 
-    //    intent untuk berpindah ke halaman detail club
     @Override
     public void clickItem(Club club) {
         Intent intent = new Intent(MainActivity.this, ClubsDetailActivity.class);
@@ -119,10 +106,8 @@ public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.
         intent.putExtra("desc", club.getStrDescriptionEN ());
         intent.putExtra(EXTRA_URL, club.getStrTeamBadge ());
         startActivity(intent);
-
     }
 
-//    menu searching, untuk mencaru club sepakbola
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
         final MenuItem item = menu.findItem(R.id.action_search);
