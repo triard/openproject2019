@@ -9,29 +9,28 @@
     android:layout_gravity="center"
     tools:context=".activities.ClubsDetailActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
     <ImageView
-        android:src="@mipmap/ic_launcher_round"
         android:id="@+id/iv_img"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_marginTop="30dp"
         android:layout_gravity="center"/>
+
     <TextView
-        android:textSize="30sp"
-        android:text="@string/app_name"
         android:id="@+id/tv_nama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/app_name"
+        android:textSize="20sp"
         android:textAlignment="center"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+        android:layout_gravity="center"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,9 +51,9 @@
             android:id="@+id/tv_asal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="2dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/app_name"
             android:textAlignment="center"
             android:textSize="20dp" />
@@ -62,41 +61,41 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="2dp"
-            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
             android:text="League : "
+            android:textStyle="bold"
             android:textSize="20dp" />
 
         <TextView
             android:id="@+id/tv_league"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="2dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/app_name"
-            android:textAlignment="center"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textAlignment="center"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="2dp"
+            android:layout_marginLeft="20dp"
             android:text="Stadium : "
             android:textStyle="bold"
-            android:textSize="20dp" />
+            android:textSize="20dp"/>
 
         <TextView
             android:id="@+id/tv_stadium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="2dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/app_name"
             android:textAlignment="center"
             android:textSize="20dp" />
@@ -104,20 +103,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="2dp"
-            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
             android:text="Nickname : "
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="2dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/app_name"
             android:textAlignment="center"
             android:textSize="20dp" />
@@ -125,20 +124,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="2dp"
-            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
             android:text="Since : "
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_since"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="2dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/app_name"
             android:textAlignment="center"
             android:textSize="20dp" />
@@ -161,10 +160,10 @@
             android:layout_marginBottom="20dp"
             android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
+            android:padding="10dp"
             android:text="@string/app_name"
-            android:textAlignment="center"
-            android:textSize="20dp" />
+            android:textAlignment="textStart"
+            android:textSize="15dp" />
     </LinearLayout>
-        </LinearLayout>
     </ScrollView>
 </LinearLayout>

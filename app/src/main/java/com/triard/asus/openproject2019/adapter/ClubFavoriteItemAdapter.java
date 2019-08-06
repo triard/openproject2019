@@ -29,7 +29,6 @@ public class ClubFavoriteItemAdapter extends RecyclerView.Adapter<ClubFavoriteIt
         this.onclickfav = onclick;
     }
 
-
     @Override
     public ViewHolder onCreateViewHolder( ViewGroup viewGroup, int position) {
         View view = LayoutInflater.from ( context ).inflate ( R.layout.activity_club_favorite_list_item, viewGroup, false);

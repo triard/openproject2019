@@ -19,7 +19,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class ClubFavoriteActivity<models> extends AppCompatActivity implements ClubFavoriteItemAdapter.Onclick {
-
     public static final String EXTRA_URL = "imageUrl";
     RecyclerView recyclerView;
     ClubFavoriteItemAdapter clubFavoriteItemAdapter;
@@ -29,13 +28,9 @@ public class ClubFavoriteActivity<models> extends AppCompatActivity implements C
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_club_favorite );
 
-//        recyclerview
         recyclerView = findViewById( R.id.recylerview_detail_item);
-
-        //        set properties
         recyclerView.setLayoutManager ( new LinearLayoutManager ( this ) );
 
-        //start convert the string value to array
         SharedPreferences sharedPreferences = getSharedPreferences("MODE_SHARED", Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("CLUB_FAVORITE", null);
@@ -51,18 +46,18 @@ public class ClubFavoriteActivity<models> extends AppCompatActivity implements C
     }
 
     @Override
-    public void clickItem(Club clubfav) {
+    public void clickItem(Club clubFav) {
         Intent intent = new Intent ( ClubFavoriteActivity.this, ClubsFavoriteDetailActivity.class );
-        intent.putExtra("idteamfav", clubfav.getIdTeam ());
-        intent.putExtra("namafav", clubfav.getStrTeam () );
-        intent.putExtra("asalfav", clubfav.getStrCountry () );
-        intent.putExtra("sincefav", clubfav.getIntFormedYear ());
-        intent.putExtra("nicknamefav", clubfav.getStrAlternate ());
-        intent.putExtra("idligafav", clubfav.getIdTeam ());
-        intent.putExtra("ligafav", clubfav.getStrLeague ());
-        intent.putExtra("stadiumfav", clubfav.getStrStadiumLocation ());
-        intent.putExtra("descfav", clubfav.getStrDescriptionEN ());
-        intent.putExtra( EXTRA_URL, clubfav.getStrTeamBadge () );
+        intent.putExtra("idteamfav", clubFav.getIdTeam ());
+        intent.putExtra("namafav", clubFav.getStrTeam () );
+        intent.putExtra("asalfav", clubFav.getStrCountry () );
+        intent.putExtra("sincefav", clubFav.getIntFormedYear ());
+        intent.putExtra("nicknamefav", clubFav.getStrAlternate ());
+        intent.putExtra("idligafav", clubFav.getIdTeam ());
+        intent.putExtra("ligafav", clubFav.getStrLeague ());
+        intent.putExtra("stadiumfav", clubFav.getStrStadiumLocation ());
+        intent.putExtra("descfav", clubFav.getStrDescriptionEN ());
+        intent.putExtra( EXTRA_URL, clubFav.getStrTeamBadge () );
         startActivity(intent);
     }
 }

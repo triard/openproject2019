@@ -4,7 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Comparator;
 
+
 public class Club {
+    private boolean isSelected;
     @SerializedName("idTeam")
     private String idTeam;
     @SerializedName("strTeam")
@@ -30,18 +32,25 @@ public class Club {
     public Club() {
     }
 
-//    , String strAlternate, String intFormedYear, String strCountry, String strDescriptionEN
-    public Club(String idTeam, String strTeam, String idLeague, String strLeague, String strStadiumLocation, String strTeamBadge) {
+    public Club(String idTeam, String strTeam, String idLeague, String strLeague, String strStadiumLocation, String strTeamBadge, String strAlternate, String intFormedYear, String strCountry, String strDescriptionEN) {
         this.idTeam = idTeam;
         this.strTeam = strTeam;
         this.idLeague = idLeague;
         this.strLeague = strLeague;
         this.strStadiumLocation = strStadiumLocation;
         this.strTeamBadge = strTeamBadge;
-//        this.strAlternate = strAlternate;
-//        this.intFormedYear = intFormedYear;
-//        this.strCountry = strCountry;
-//        this.strDescriptionEN = strDescriptionEN;
+        this.strAlternate = strAlternate;
+        this.intFormedYear = intFormedYear;
+        this.strCountry = strCountry;
+        this.strDescriptionEN = strDescriptionEN;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
     public String getIdTeam() {
