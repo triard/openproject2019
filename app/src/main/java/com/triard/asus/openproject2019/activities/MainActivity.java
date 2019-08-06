@@ -1,5 +1,6 @@
 package com.triard.asus.openproject2019.activities;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.triard.asus.openproject2019.R;
@@ -32,10 +34,14 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.Onclick {
     public static final String EXTRA_URL = "imageUrl";
+    public static final String CHECKBOX = "cb";
     private Button mBtn_ckubFav;
     RecyclerView recyclerView;
     ClubItemsAdapter clubItemsAdapter;
     SharedPreferences preferences;
+    SharedPreferences sharedPreferences;
+    private Boolean booleanOnOf;
+    private CheckBox checkBox;
     private ClubService clubService;
     private ArrayList<Club> clubs = new ArrayList<> (  ) ;
     private static final String TAG = MainActivity.class.getName();
@@ -47,6 +53,11 @@ public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.
 
         recyclerView = findViewById ( R.id.recycler_view );
         recyclerView.setLayoutManager ( new LinearLayoutManager ( getApplicationContext ( ), LinearLayoutManager.VERTICAL, false ) );
+//        sharedPreferences = this.getSharedPreferences ( "MODE_SHARED", MODE_PRIVATE );
+//        booleanOnOf = sharedPreferences.getBoolean ( CHECKBOX, false );
+//        checkBox.setChecked ( booleanOnOf );
+
+
         preferences = this.getSharedPreferences ( "MY_DATA", MODE_PRIVATE );
         mBtn_ckubFav = (Button) findViewById ( R.id.btn_ckubFav );
         mBtn_ckubFav.setOnClickListener ( new View.OnClickListener ( ) {

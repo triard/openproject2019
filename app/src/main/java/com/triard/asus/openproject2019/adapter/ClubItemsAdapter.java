@@ -32,9 +32,8 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
     ArrayList<Club> filterList;
     private Onclick listener;
     CustomFilter filter;
-    ArrayList<Club> itemSelected = new ArrayList<>();
     private CheckBox checkBox;
-    private Boolean booleanOnOf;
+    ArrayList<Club> itemSelected = new ArrayList<>();
     public static final String CHECKBOX = "cb";
 
 
@@ -65,7 +64,7 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
         myHolder.mStrDescriptionEN.setText( club.getStrDescriptionEN ());
         Picasso.get().load( club.getStrTeamBadge ()).into(myHolder.mImgBadgeTeam);
         myHolder.bind(club,listener);
-        myHolder.cbItem.setChecked ( club.isSelected () );
+
 
         Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left);
         myHolder.itemView.startAnimation(animation);
@@ -73,7 +72,9 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
         SharedPreferences sharedPref = mContext.getSharedPreferences ( "MODE_SHARED", Context.MODE_PRIVATE );
         final SharedPreferences.Editor editor = sharedPref.edit ();
         final Gson gson =  new Gson ();
-
+        Boolean valueBoolean = sharedPref.getBoolean ( CHECKBOX, false );
+        editor.putBoolean ( CHECKBOX, valueBoolean );
+        myHolder.cbItem.setChecked ( getFromSp() );
         myHolder.cbItem.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener ( ) {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -81,31 +82,31 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
                 if(isChecked){
                     itemSelected.add( club );
                     String jsonString = gson.toJson(getSelectedString());
-                    editor.putString( "CLUB_FAVORITE",jsonString);
-//                    editor.putBoolean ( CHECKBOX, true );
+                    editor.putString ( "CLUB_FAVORITE", jsonString );
+                    editor.putBoolean ( CHECKBOX, true);
                     editor.commit ();
                 }else{
                     itemSelected.remove( club );
                     String jsonString = gson.toJson(getSelectedString());
                     editor.putString( "CLUB_FAVORITE",jsonString);
-//                    editor.putBoolean ( CHECKBOX, false );
+                    editor.putBoolean ( CHECKBOX,false);
                     editor.commit ();
                 }
             }
         } );
 
-//        loadData();
-//        UpdateData();
     }
 
-    private void loadData() {
-//        SharedPreferences sharedPreferences = mContext.getSharedPreferences ( "MODE_SHARED", Context.MODE_PRIVATE );
-//        booleanOnOf = sharedPreferences.getBoolean ( CHECKBOX, true );
+    private Object wkwk() {
+        return itemSelected;
     }
 
-    private void UpdateData(){
-//        checkBox.setChecked ( booleanOnOf );
+
+    private boolean getFromSp() {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences ( "MODE_SHARED", Context.MODE_PRIVATE );
+        return sharedPreferences.getBoolean ( "CLUB_FAVORITE",false );
     }
+
 
     private ArrayList<Club> getSelectedString() {
         return itemSelected;    }
