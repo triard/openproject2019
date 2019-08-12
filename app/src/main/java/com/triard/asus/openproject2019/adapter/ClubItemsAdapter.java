@@ -118,8 +118,7 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
         public ViewHolder(View itemview) {
             super(itemview);
 
-            this.mStrIdTeam = itemview.findViewById(R.id.TextViewIdTeam);
-            this.mStrTeam = itemview.findViewById(R.id.TextViewNama);
+            this.mStrIdTeam = itemview.findViewById(R.id.TextViewIdTeam);this.mStrTeam = itemview.findViewById(R.id.TextViewNama);
             this.mStrIdLiga = itemview.findViewById(R.id.TextViewIdLiga);
             this.mStrLeague = itemview.findViewById(R.id.TextViewLegaue);
             this.mStrStadium = itemview.findViewById(R.id.TextViewStadium);

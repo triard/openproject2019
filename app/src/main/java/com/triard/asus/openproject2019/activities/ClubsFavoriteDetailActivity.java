@@ -1,7 +1,9 @@
 package com.triard.asus.openproject2019.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,5 +40,10 @@ public class ClubsFavoriteDetailActivity extends AppCompatActivity {
         tvDescriptionENfav.setText(getIntent().getStringExtra("descfav"));
         String image = getIntent().getStringExtra(EXTRA_URL);
         Picasso.get().load(image).into(imageViewfav);
+    }
+
+    public void pindah(View view) {
+        Intent intent = new Intent(ClubsFavoriteDetailActivity.this, ClubsFavoriteSchedule.class);
+        startActivity(intent);
     }
 }

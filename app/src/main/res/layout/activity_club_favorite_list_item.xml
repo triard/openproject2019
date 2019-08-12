@@ -16,10 +16,10 @@
             android:id="@+id/ImageViewFavorite"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="4dp"
-            android:src="@drawable/ic_launcher_foreground"
             android:layout_margin="20dp"
-            />
+            android:padding="4dp"
+            android:src="@drawable/ic_launcher_foreground" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,83 +30,82 @@
                 android:id="@+id/TextViewNamaFavorite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
                 android:layout_marginLeft="5dp"
-                android:textSize="15dp"
                 android:text="nama club"
-                />
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15dp" />
             <TextView
                 android:id="@+id/TextViewAsalFavorite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
                 android:layout_marginLeft="5dp"
-                android:textSize="10dp"
-                android:text="asal club"/>
+                android:text="asal club"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/TextViewAlternate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
                 android:layout_marginLeft="5dp"
-                android:textSize="10dp"
                 android:text="asal club"
-                android:visibility="gone"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10dp"
+                android:visibility="gone" />
             <TextView
                 android:id="@+id/TextViewLegaue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
                 android:layout_marginLeft="5dp"
-                android:textSize="10dp"
                 android:text="asal club"
-                android:visibility="gone"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10dp"
+                android:visibility="gone" />
             <TextView
                 android:id="@+id/TextViewStadium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
                 android:layout_marginLeft="5dp"
-                android:textSize="10dp"
                 android:text="asal club"
-                android:visibility="gone"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10dp"
+                android:visibility="gone" />
             <TextView
                 android:id="@+id/TextViewSince"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
                 android:layout_marginLeft="5dp"
-                android:textSize="10dp"
                 android:text="asal club"
-                android:visibility="gone"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10dp"
+                android:visibility="gone" />
             <TextView
                 android:id="@+id/TextViewDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
                 android:layout_marginLeft="5dp"
-                android:textSize="10dp"
                 android:text="asal club"
-                android:visibility="gone"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10dp"
+                android:visibility="gone" />
             <TextView
                 android:id="@+id/TextViewIdTeamfav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
                 android:layout_marginLeft="5dp"
-                android:textSize="10dp"
                 android:text="asal club"
-                android:visibility="gone"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10dp"
+                android:visibility="gone" />
             <TextView
                 android:id="@+id/TextViewIdLigafav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
                 android:layout_marginLeft="5dp"
-                android:textSize="10dp"
                 android:text="asal club"
-                android:visibility="gone"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10dp"
+                android:visibility="gone" />
 
         </LinearLayout>
 
