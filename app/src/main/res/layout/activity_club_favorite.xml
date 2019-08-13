@@ -14,18 +14,18 @@ tools:context=".activities.ClubFavoriteActivity">
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="YOUR FAVOTITE CLUB"
+    android:text="YOUR FAVORITE CLUB"
     android:textColor="@android:color/black"
     android:textStyle="bold"
     android:gravity="center"/>
 
 <android.support.v7.widget.RecyclerView
-    android:layout_weight="1"
     android:id="@+id/recylerview_detail_item"
+    android:layout_weight="1"
+    android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent">
+
 </android.support.v7.widget.RecyclerView>
 </LinearLayout>
-

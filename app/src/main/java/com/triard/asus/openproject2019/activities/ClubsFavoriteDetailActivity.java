@@ -41,7 +41,6 @@ public class ClubsFavoriteDetailActivity extends AppCompatActivity {
         String image = getIntent().getStringExtra(EXTRA_URL);
         Picasso.get().load(image).into(imageViewfav);
     }
-
     public void pindah(View view) {
         Intent intent = new Intent(ClubsFavoriteDetailActivity.this, ClubsFavoriteSchedule.class);
         startActivity(intent);

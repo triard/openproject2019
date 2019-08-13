@@ -33,6 +33,9 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
     private Onclick listener;
     CustomFilter filter;
     ArrayList<Club> itemSelected = new ArrayList<>();
+    private CheckBox checkBox;
+    private Boolean booleanOnOf;
+    public static final String CHECKBOX = "cb";
 
 
     public ClubItemsAdapter(Context mContext, ArrayList<Club> clubs, Onclick onclick) {
@@ -41,7 +44,6 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
         this.listener = onclick;
         this.filterList = clubs;
     }
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int position) {
@@ -57,18 +59,17 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
         myHolder.mStrIdLiga.setText( club.getIdLeague ());
         myHolder.mStrLeague.setText( club.getStrLeague ());
         myHolder.mStrStadium.setText( club.getStrStadiumLocation ());
-              myHolder.mStrCountry.setText( club.getStrCountry ());
-      myHolder.mStrAlternate.setText( club.getStrAlternate());
-      myHolder.mIntFormedYear.setText( club.getIntFormedYear ());
-      myHolder.mStrDescriptionEN.setText( club.getStrDescriptionEN ());
+        myHolder.mStrCountry.setText( club.getStrCountry ());
+        myHolder.mStrAlternate.setText( club.getStrAlternate());
+        myHolder.mIntFormedYear.setText( club.getIntFormedYear ());
+        myHolder.mStrDescriptionEN.setText( club.getStrDescriptionEN ());
         Picasso.get().load( club.getStrTeamBadge ()).into(myHolder.mImgBadgeTeam);
         myHolder.bind(club,listener);
+        myHolder.cbItem.setChecked ( club.isSelected () );
 
-//        animasi list club
         Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left);
         myHolder.itemView.startAnimation(animation);
 
-        final ArrayList<Club> listItemChosen = new ArrayList<> (  );
         SharedPreferences sharedPref = mContext.getSharedPreferences ( "MODE_SHARED", Context.MODE_PRIVATE );
         final SharedPreferences.Editor editor = sharedPref.edit ();
         final Gson gson =  new Gson ();
@@ -81,20 +82,33 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
                     itemSelected.add( club );
                     String jsonString = gson.toJson(getSelectedString());
                     editor.putString( "CLUB_FAVORITE",jsonString);
+//                    editor.putBoolean ( CHECKBOX, true );
                     editor.commit ();
                 }else{
                     itemSelected.remove( club );
                     String jsonString = gson.toJson(getSelectedString());
                     editor.putString( "CLUB_FAVORITE",jsonString);
+//                    editor.putBoolean ( CHECKBOX, false );
                     editor.commit ();
                 }
             }
         } );
+
+//        loadData();
+//        UpdateData();
+    }
+
+    private void loadData() {
+//        SharedPreferences sharedPreferences = mContext.getSharedPreferences ( "MODE_SHARED", Context.MODE_PRIVATE );
+//        booleanOnOf = sharedPreferences.getBoolean ( CHECKBOX, true );
+    }
+
+    private void UpdateData(){
+//        checkBox.setChecked ( booleanOnOf );
     }
 
     private ArrayList<Club> getSelectedString() {
         return itemSelected;    }
-
 
     @Override
     public int getItemCount() {
