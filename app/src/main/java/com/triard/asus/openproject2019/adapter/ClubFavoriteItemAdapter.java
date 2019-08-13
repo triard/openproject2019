@@ -9,10 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
 import com.triard.asus.openproject2019.R;
-import com.triard.asus.openproject2019.activities.ClubFavoriteActivity;
 import com.triard.asus.openproject2019.model.Club;
 
 import java.util.ArrayList;
