@@ -2,6 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="Home"
+        app:showAsAction="ifRoom"
+        />
+    <item
         android:id="@+id/klub_favorit"
         android:enabled="true"
         android:icon="@drawable/ic_playlist"
@@ -15,4 +22,5 @@
         android:title="Jadwal"
         app:showAsAction="ifRoom"
         />
+
 </menu>
