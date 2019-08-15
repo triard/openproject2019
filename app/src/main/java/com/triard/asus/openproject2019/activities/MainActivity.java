@@ -1,6 +1,6 @@
 package com.triard.asus.openproject2019.activities;
 
-import android.content.Context;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.triard.asus.openproject2019.R;
@@ -25,8 +26,11 @@ import com.triard.asus.openproject2019.interfaces.ClubService;
 import com.triard.asus.openproject2019.model.Club;
 import com.triard.asus.openproject2019.network.ApiClient;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.
     private ClubService clubService;
     private ArrayList<Club> clubs = new ArrayList<> (  ) ;
     private static final String TAG = MainActivity.class.getName();
+    private DatePickerDialog datePickerDialog;
+    private SimpleDateFormat dateFormatter;
+    private Button btDatePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +75,30 @@ public class MainActivity extends AppCompatActivity implements ClubItemsAdapter.
             }
         } );
         clubService = ApiClient.getClient ().create(ClubService.class);
-        getAllClub ( );
+        getAllClub();
+
+        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        btDatePicker = (Button) findViewById(R.id.date);
+        btDatePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDateDialog();
+            }
+        });
+        }
+
+    private void showDateDialog() {
+        Calendar newCalendar = Calendar.getInstance();
+        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+            }
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
 //    add clubs to arraylist

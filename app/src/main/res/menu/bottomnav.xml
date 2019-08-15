@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/klub_favorit"
+        android:enabled="true"
+        android:icon="@drawable/ic_playlist"
+        android:title="Klub Favorit"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/jadwal"
+        android:enabled="true"
+        android:icon="@drawable/ic_date"
+        android:title="Jadwal"
+        app:showAsAction="ifRoom"
+        />
+</menu>

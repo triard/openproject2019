@@ -10,11 +10,12 @@
 
     <ImageView
         android:id="@+id/iv_imgfav"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@mipmap/ic_launcher_round"
+
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/ic_launcher_round" />
 
     <TextView
         android:id="@+id/tv_namafav"
@@ -27,7 +28,16 @@
         android:layout_marginTop="7dp"
         android:layout_marginBottom="10dp"/>
 
-    <ScrollView
+
+        <Button
+            android:id="@+id/button_schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="jadwal pertandingan"
+            android:onClick="pindah"/>
+
+        <ScrollView
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

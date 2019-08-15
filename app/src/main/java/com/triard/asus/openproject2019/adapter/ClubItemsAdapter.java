@@ -16,11 +16,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 import com.triard.asus.openproject2019.model.Club;
 import com.triard.asus.openproject2019.utils.CustomFilter;
 import com.triard.asus.openproject2019.R;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import retrofit2.Callback;
@@ -32,9 +34,7 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
     ArrayList<Club> filterList;
     private Onclick listener;
     CustomFilter filter;
-    private CheckBox checkBox;
     ArrayList<Club> itemSelected = new ArrayList<>();
-    public static final String CHECKBOX = "cb";
 
 
     public ClubItemsAdapter(Context mContext, ArrayList<Club> clubs, Onclick onclick) {
@@ -72,9 +72,9 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
         SharedPreferences sharedPref = mContext.getSharedPreferences ( "MODE_SHARED", Context.MODE_PRIVATE );
         final SharedPreferences.Editor editor = sharedPref.edit ();
         final Gson gson =  new Gson ();
-        Boolean valueBoolean = sharedPref.getBoolean ( CHECKBOX, false );
-        editor.putBoolean ( CHECKBOX, valueBoolean );
-        myHolder.cbItem.setChecked ( getFromSp() );
+
+        myHolder.cbItem.setChecked (getFromSp(club));
+
         myHolder.cbItem.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener ( ) {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -83,13 +83,11 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
                     itemSelected.add( club );
                     String jsonString = gson.toJson(getSelectedString());
                     editor.putString ( "CLUB_FAVORITE", jsonString );
-                    editor.putBoolean ( CHECKBOX, true);
                     editor.commit ();
                 }else{
                     itemSelected.remove( club );
                     String jsonString = gson.toJson(getSelectedString());
                     editor.putString( "CLUB_FAVORITE",jsonString);
-                    editor.putBoolean ( CHECKBOX,false);
                     editor.commit ();
                 }
             }
@@ -97,14 +95,26 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
 
     }
 
-    private Object wkwk() {
-        return itemSelected;
-    }
 
-
-    private boolean getFromSp() {
+    private boolean getFromSp(Club club) {
         SharedPreferences sharedPreferences = mContext.getSharedPreferences ( "MODE_SHARED", Context.MODE_PRIVATE );
-        return sharedPreferences.getBoolean ( "CLUB_FAVORITE",false );
+        String json = sharedPreferences.getString("CLUB_FAVORITE", "[]");
+
+        Type type = new TypeToken<ArrayList<Club>>(){}.getType ();
+
+        Gson gson = new Gson();
+        ArrayList<Club> arr = gson.fromJson ( json, type );
+
+        boolean found = false;
+
+        for (Club data : arr) {
+            if (data.getIdTeam().equals(club.getIdTeam())) {
+                found = true;
+                break;
+            }
+        }
+
+        return found;
     }
 
 
@@ -133,8 +143,7 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
         public ViewHolder(View itemview) {
             super(itemview);
 
-            this.mStrIdTeam = itemview.findViewById(R.id.TextViewIdTeam);
-            this.mStrTeam = itemview.findViewById(R.id.TextViewNama);
+            this.mStrIdTeam = itemview.findViewById(R.id.TextViewIdTeam);this.mStrTeam = itemview.findViewById(R.id.TextViewNama);
             this.mStrIdLiga = itemview.findViewById(R.id.TextViewIdLiga);
             this.mStrLeague = itemview.findViewById(R.id.TextViewLegaue);
             this.mStrStadium = itemview.findViewById(R.id.TextViewStadium);
