@@ -98,7 +98,7 @@ public class ClubItemsAdapter extends RecyclerView.Adapter<ClubItemsAdapter.View
 
     private boolean getFromSp(Club club) {
         SharedPreferences sharedPreferences = mContext.getSharedPreferences ( "MODE_SHARED", Context.MODE_PRIVATE );
-        String json = sharedPreferences.getString("CLUB_FAVORITE", null);
+        String json = sharedPreferences.getString("CLUB_FAVORITE", "[]");
 
         Type type = new TypeToken<ArrayList<Club>>(){}.getType ();
 
