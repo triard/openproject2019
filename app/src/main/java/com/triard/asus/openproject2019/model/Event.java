@@ -24,18 +24,17 @@ public class Event {
     @SerializedName("strTime")
     private String strTime;
 
-    public Event() {}
 
-    public Event(int idEvent, String strEvent, String strLeague, int idHomeTeam, String strHomeTeam, int idAwayTeam, String strAwayTeam, String dateEvent, String strTime){
-    this.idEvent = idEvent;
-    this.strEvent = strEvent;
-    this.strLeague = strLeague;
-    this.idHomeTeam = idHomeTeam;
-    this.strHomeTeam = strHomeTeam;
-    this.idAwayTeam = idAwayTeam;
-    this.strAwayTeam = strAwayTeam;
-    this.dateEvent = dateEvent;
-    this.strTime = strTime;
+    public Event(int idEvent, String strEvent, String strLeague, int idHomeTeam, String strHomeTeam, int idAwayTeam, String strAwayTeam, Date dateEvent, String strTime){
+        this.idEvent = idEvent;
+        this.strEvent = strEvent;
+        this.strLeague = strLeague;
+        this.idHomeTeam = idHomeTeam;
+        this.strHomeTeam = strHomeTeam;
+        this.idAwayTeam = idAwayTeam;
+        this.strAwayTeam = strAwayTeam;
+        this.dateEvent = dateEvent;
+        this.strTime = strTime;
     }
 
     public int getIdEvent() {
@@ -98,7 +97,10 @@ public class Event {
         this.dateEvent = dateEvent;
     }
 
-    public String getStrTime() { return strTime; }
+
+    public String getStrTime() {
+        return strTime;
+    }
 
     public void setStrTime(String strTime) {
         this.strTime = strTime;
