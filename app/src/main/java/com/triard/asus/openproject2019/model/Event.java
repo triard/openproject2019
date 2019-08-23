@@ -20,9 +20,10 @@ public class Event {
     @SerializedName("strAwayTeam")
     private String strAwayTeam;
     @SerializedName("dateEvent")
-    private Date dateEvent;
+    private String dateEvent;
     @SerializedName("strTime")
     private String strTime;
+
 
     public Event(int idEvent, String strEvent, String strLeague, int idHomeTeam, String strHomeTeam, int idAwayTeam, String strAwayTeam, Date dateEvent, String strTime){
         this.idEvent = idEvent;
@@ -88,13 +89,14 @@ public class Event {
         this.strAwayTeam = strAwayTeam;
     }
 
-    public Date getDateEvent() {
+    public String getDateEvent() {
         return dateEvent;
     }
 
-    public void setDateEvent(Date dateEvent) {
+    public void setDateEvent(String dateEvent) {
         this.dateEvent = dateEvent;
     }
+
 
     public String getStrTime() {
         return strTime;

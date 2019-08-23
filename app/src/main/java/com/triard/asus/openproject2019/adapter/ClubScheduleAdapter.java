@@ -1,5 +1,6 @@
 package com.triard.asus.openproject2019.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,33 +8,40 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.internal.bind.DateTypeAdapter;
 import com.triard.asus.openproject2019.R;
+import com.triard.asus.openproject2019.model.Event;
 import com.triard.asus.openproject2019.model.Schedule;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ClubScheduleAdapter extends RecyclerView.Adapter<ClubScheduleAdapter.ViewHolder> {
 
-    private ArrayList<Schedule> schedules;
+    Context context;
+    public ArrayList<Event> schedules;
 
-    public ClubScheduleAdapter(ArrayList<Schedule> schedules) {
+    public ClubScheduleAdapter(Context context, ArrayList<Event> schedules) {
         this.schedules = schedules;
+        this.context = context;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int position) {
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
-        View view = layoutInflater.inflate(R.layout.activity_club_favorite_schedule_list_item, viewGroup, false);
+        View view = layoutInflater.from(context).inflate(R.layout.activity_club_favorite_schedule_list_item, viewGroup, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.txtIdEvent.setText(schedules.get(position).getIdEvent());
-        holder.txtLeague.setText(schedules.get(position).getLeague());
-        holder.txtEvent.setText(schedules.get(position).getEvent());
-        holder.txtDate.setText(schedules.get(position).getDate());
-        holder.txtTime.setText(schedules.get(position).getTime());
+        final Event event= schedules.get(position);
+        holder.txtIdEvent.setText( event.getIdEvent());
+        holder.txtLeague.setText( event.getStrLeague());
+        holder.txtEvent.setText( event.getStrEvent());
+        holder.txtDate.setText ( event.getDateEvent());
+        holder.txtTime.setText( event.getStrTime());
+        holder.txtHome.setText( event.getStrHomeTeam());
     }
 
     @Override
@@ -42,15 +50,17 @@ public class ClubScheduleAdapter extends RecyclerView.Adapter<ClubScheduleAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtIdEvent, txtLeague, txtEvent, txtDate, txtTime;
+        private TextView txtIdEvent, txtLeague, txtEvent, txtTime,txtHome,txtDate;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
-            txtIdEvent = (TextView) itemView.findViewById(R.id.TextViewIdEvent);
+
             txtLeague = (TextView) itemView.findViewById(R.id.TextViewLeague);
             txtEvent = (TextView) itemView.findViewById(R.id.TextViewEvent);
             txtDate = (TextView) itemView.findViewById(R.id.TextViewDate);
             txtTime = (TextView) itemView.findViewById(R.id.TextViewTime);
+            txtHome  = (TextView) itemView.findViewById(R.id.TextViewHome);
         }
     }
 }
